@@ -61,8 +61,14 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     private function getProvider()
     {
         $app = $this->app;
-
-        $version = intval($app::VERSION);
+        $version=0;
+        if(isset($app::VERSION)){
+          $version = intval($app::VERSION);
+        }else {
+          if(strpos("Lumen",$app->version())>0){
+            $version = 5;
+          }
+        }
 
         switch ($version) {
             case 4:
