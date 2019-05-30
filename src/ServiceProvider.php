@@ -65,7 +65,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         if(defined('$app::VERSION')){
           $version = intval($app::VERSION);
         }else {
-          if(strpos("Lumen",$app->version())>0){
+          if(strpos($app->version(),"Lumen")>=0){
             $version = 5;
           }
         }
